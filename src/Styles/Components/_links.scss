@@ -1,0 +1,11 @@
+.link {
+  text-decoration: none;
+  color: $gray-dark;
+  padding-bottom: 3px;
+  border-bottom: solid 2px transparent;
+  transition: border-bottom .3s ease-in-out;
+  
+  &:hover {
+    border-bottom: solid 2px lighten($gray-dark, 30);
+  }
+}

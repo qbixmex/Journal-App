@@ -5,12 +5,6 @@ import AuthRouter from "./AuthRouter";
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <ul className="mb-4">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/auth/login">Login</Link></li>
-        <li><Link to="/auth/register">Register</Link></li>
-      </ul>
-
       <Routes>
         <Route path="/" element={ <JournalScreen /> } />
         <Route path="/auth/*" element={ <AuthRouter /> } />
