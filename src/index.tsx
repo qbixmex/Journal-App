@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Journal from './Components/Journal';
+import JournalApp from './Components/JournalApp';
 import "./Styles/main.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Journal />
+    <JournalApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
