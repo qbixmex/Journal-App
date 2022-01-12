@@ -10,14 +10,66 @@ $teal: hsl(162, 73%, 46%);
 $cyan: hsl(190, 90%, 50%);
 $white: hsl(0, 0%, 100%);
 $gray: hsl(208, 7%, 46%);
-$gray-dark: hsl(210, 10%, 23%);
-$primary: hsl(216, 98%, 52%);
+$gray-dark: hsl(0, 0%, 21%);
+$gray-light: hsl(0, 0%, 85%);
+$primary: hsl(237, 48%, 57%);
 $secondary: hsl(208, 7%, 46%);
 $success: hsl(152, 69%, 31%);
 $info: hsl(190, 90%, 50%);
 $warning: hsl(45, 100%, 51%);
 $danger: hsl(354, 70%, 54%);
 $light: hsl(210, 90%, 95%);
-$dark: hsl(210, 10%, 10%);
-$white: hsl(0, 0%, 100%);
+$dark: hsl(210, 20%, 15%);
 $black: hsl(0, 0%, 0%);
+
+// Text Colors
+.blue   { color: $blue; }
+.indigo { color: $indigo; }
+.purple { color: $purple; }
+.pink   { color: $pink; }
+.red    { color: $red; }
+.orange { color: $orange; }
+.yellow { color: $yellow; }
+.green  { color: $green; }
+.teal   { color: $teal; }
+.cyan   { color: $cyan; }
+.white  { color: $white; }
+.gray   { color: $gray; }
+.primary   { color: $primary; }
+.secondary { color: $secondary; }
+.success   { color: $success; }
+.info      { color: $info; }
+.warning   { color: $warning; }
+.danger    { color: $danger; }
+.light     { color: $light; }
+.dark      { color: $dark; }
+.black     { color: $black; }
+.gray-dark { color: $gray-dark; }
+
+// Backgrounds
+.bg-blue   { background-color: $blue; }
+.bg-indigo { background-color: $indigo; }
+.bg-purple { background-color: $purple; }
+.bg-pink   { background-color: $pink; }
+.bg-red    { background-color: $red; }
+.bg-orange { background-color: $orange; }
+.bg-yellow { background-color: $yellow; }
+.bg-green  { background-color: $green; }
+.bg-teal   { background-color: $teal; }
+.bg-cyan   { background-color: $cyan; }
+.bg-white  { background-color: $white; }
+.bg-gray   { background-color: $gray; }
+.bg-primary   { background-color: $primary; }
+.bg-secondary { background-color: $secondary; }
+.bg-success   { background-color: $success; }
+.bg-info      { background-color: $info; }
+.bg-warning   { background-color: $warning; }
+.bg-danger    { background-color: $danger; }
+.bg-light     { background-color: $light; }
+.bg-dark      { background-color: $dark; }
+.bg-black     { background-color: $black; }
+.bg-gray  {
+  background-color: $gray;
+  &--dark { background-color: $gray-dark; }
+  &--light { background-color: $gray-light; }
+}
