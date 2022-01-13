@@ -1,10 +1,14 @@
+export interface Login {
+  email: string,
+  password: string
+}
 export interface AuthState {
   uid?: string | number,
   name?: string;
 };
 
 export interface Payload {
-  uid: string;
+  uid: string | number;
   displayName: string;
 }
 

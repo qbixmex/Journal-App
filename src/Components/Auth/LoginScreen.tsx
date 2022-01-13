@@ -1,11 +1,31 @@
+import { FormEvent } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { login } from "../../Actions/auth";
+import useForm from '../../Hooks/useForm';
+import { Login } from "../../Types";
 
 const LoginScreen = () => {
+
+  const dispatch = useDispatch();
+
+  const initialState: Login = {
+    email: "johndoe@gmail.com",
+    password: "123456789"
+  };
+
+  const { handleInputChange, email, password } = useForm<Login>( initialState );
+
+  const handleLogin = (event : FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch( login( 123456789, "John Doe" ) );
+  };
+
   return (
     <div className="animate__animated animate__fadeIn">
      <h1 className="auth__title">Login</h1>
 
-     <form>
+     <form onSubmit={ handleLogin }>
 
       <input
         id="email"
@@ -15,6 +35,8 @@ const LoginScreen = () => {
         placeholder="email"
         autoCorrect="off"
         autoComplete="off"
+        value={ email }
+        onChange={ handleInputChange }
       />
 
       <input
@@ -24,8 +46,9 @@ const LoginScreen = () => {
         name="password"
         placeholder="password"
         autoCorrect="off"
+        value={ password }
+        onChange={ handleInputChange }
       />
-
       
       <button
         id="login_button"
