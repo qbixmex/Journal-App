@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { startLoginEmailPassword } from "../../Actions/auth";
+import { startLoginEmailPassword, startGoogleLogin } from "../../Actions/auth";
 import useForm from '../../Hooks/useForm';
 import { Login } from "../../Types";
 
@@ -19,6 +19,10 @@ const LoginScreen = () => {
   const handleLogin = (event : FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch( startLoginEmailPassword( email, password ) );
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch( startGoogleLogin() );
   };
 
   return (
@@ -59,7 +63,10 @@ const LoginScreen = () => {
       </button>
 
       <div className="auth__social-networks">
-        <div className="google-btn mb-3">
+        <div
+          className="google-btn mb-3"
+          onClick={ handleGoogleLogin }
+        >
           <div className="google-icon-wrapper">
             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
           </div>
