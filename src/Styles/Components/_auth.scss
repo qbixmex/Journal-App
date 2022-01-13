@@ -14,7 +14,7 @@
     box-shadow: 0px 0px 10px 5px rgba($gray-dark, 0.3);
     border-radius: 3px;
     padding: 20px;
-    width: 250px;
+    width: 300px;
     color: $gray-dark;
   }
 
@@ -25,16 +25,16 @@
     color: darken($primary, 15);
   }
 
-  &__input {    
+  &__input {
     color: $gray-dark;
     border: 0;
     border-bottom: 2px solid $light;
     font-size: 1rem;
     margin-bottom: 16px;
-    width: calc(100% - 20px);
+    width: 100%;
     border-radius: 4px;
     height: 20px;
-    padding: 10px;
+    padding: 20px 15px;
     transition: border-bottom .3s ease-in-out;
 
     &::placeholder {

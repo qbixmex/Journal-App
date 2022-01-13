@@ -27,7 +27,7 @@
 
   &-block {
     display: block;
-    width: calc(100% - 20px);
+    width: 100%;
   }
 }
 
@@ -64,6 +64,7 @@
     background-color: darken($warning, 10);
   }
 }
+
 .btn-success {
   background-color: $success;
   color: $white;
@@ -81,7 +82,6 @@
     background-color: darken($danger, 10);
   }
 }
-
 
 .google-btn {
   cursor: pointer;
