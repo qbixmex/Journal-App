@@ -58,6 +58,7 @@
     "@types/enzyme": "^3.10.11",
     "@types/webpack-env": "^1.16.3",
     "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2"
+    "enzyme-to-json": "^3.6.2",
+    "redux-devtools-extension": "^2.13.9"
   }
 }

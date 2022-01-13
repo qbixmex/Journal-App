@@ -1,5 +1,5 @@
 export interface AuthState {
-  uid?: string,
+  uid?: string | number,
   name?: string;
 };
 
