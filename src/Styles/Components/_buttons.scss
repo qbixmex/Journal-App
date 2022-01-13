@@ -31,6 +31,58 @@
   }
 }
 
+.btn-primary {
+  background-color: $primary;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($primary, 10);
+  }
+}
+
+.btn-secondary {
+  background-color: $gray-light;
+  color: $dark;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($gray-light, 10);
+  }
+}
+
+.btn-info {
+  background-color: $info;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($info, 10);
+  }
+}
+
+.btn-warning {
+  background-color: $yellow;
+  color: $dark;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($warning, 10);
+  }
+}
+.btn-success {
+  background-color: $success;
+  color: $white;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($success, 10);
+  }
+}
+
+.btn-danger {
+  background-color: $danger;
+  color: $white;
+  transition: background-color .3s ease-in-out;
+  &:hover {
+    background-color: darken($danger, 10);
+  }
+}
+
+
 .google-btn {
   cursor: pointer;
   margin-top: 5px;

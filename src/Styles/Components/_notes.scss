@@ -1,0 +1,30 @@
+.notes {
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__date {
+    color: $light;
+  }
+
+  &__app-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary;
+    padding: 10px 20px;
+    
+    .btn {
+      border-radius: 0;
+      background-color: transparent;
+      transition: color .3s ease-in-out;
+      &:hover {
+        color: $gray-dark;
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import NoteScreen from "../Notes/NoteScreen";
 import Sidebar from "./Sidebar";
 // import NothingSelected from "./NothingSelected";
 
@@ -7,6 +8,7 @@ const RegisterScreen = () => {
       <Sidebar />
 
       {/* <NothingSelected /> */}
+      <NoteScreen />
     </div>
   );
 };
