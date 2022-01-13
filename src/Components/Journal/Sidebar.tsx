@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser, faCalendarPlus } from '@fortawesome/free-solid-svg-icons'
+import JournalEntries from "./JournalEntries";
 
 const Sidebar = () => {
   return (
@@ -20,6 +21,9 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={ faCalendarPlus } size="5x" className="mb-4" />
         <p>New Entry</p>
       </div>
+
+      <JournalEntries />
+
     </aside>
   );
 };
