@@ -1,13 +1,12 @@
 import Sidebar from "./Sidebar";
+// import NothingSelected from "./NothingSelected";
 
 const RegisterScreen = () => {
   return (
     <div className="journal__main-content">
       <Sidebar />
 
-      <main>
-        <h1>Main Content</h1>
-      </main>
+      {/* <NothingSelected /> */}
     </div>
   );
 };
