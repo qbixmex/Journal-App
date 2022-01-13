@@ -2,8 +2,7 @@
   &__main-content {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
   }
 
   &__date {
@@ -11,19 +10,66 @@
   }
 
   &__app-bar {
-    width: 100%;
+    flex: 0 0 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: $primary;
     padding: 10px 20px;
-    
+
     .btn {
       border-radius: 0;
       background-color: transparent;
-      transition: color .3s ease-in-out;
+      transition: color 0.3s ease-in-out;
       &:hover {
         color: $gray-dark;
+      }
+    }
+  }
+
+  &__content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+
+    &__title-input,
+    &__textarea {
+      border: none;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 15px;
+      color: lighten($gray-dark, 20);
+
+      &:focus {
+        outline: none;
+      }
+    }    
+
+    &::placeholder {
+      color: lighten($gray-light, 10);
+    }
+
+    &__title-input {
+      flex: 0 0 none;
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    &__textarea {
+      border: none;
+      font-size: 20px;
+      flex: 1 1 auto;
+      resize: none;
+    }
+
+    &__image-box {
+      text-align: right;
+      img {
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px $gray-light;
+        height: 150px;
       }
     }
   }
