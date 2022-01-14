@@ -4,9 +4,11 @@ import { Dispatch } from "redux";
 
 export const startLoginEmailPassword = (email: string, password: string): ( dispatch: Dispatch ) => void => {
   return ( dispatch: Dispatch ): void => {
-    setTimeout(() => {
-      dispatch( login("123", "JohnDoe") )
-    }, 3000);
+    firebase.auth().signInWithEmailAndPassword( email, password )
+      .then(({ user }) => {
+        dispatch( login( user?.uid!, user?.displayName! ) )
+      })
+      .catch( e => console.error( e ));
   };
 };
 
