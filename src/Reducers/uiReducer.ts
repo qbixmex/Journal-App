@@ -1,11 +1,11 @@
-import { types, UI, UIAction } from "../Types";
+import { types, UIState, UIAction } from "../Types";
 
-const initialState: UI = {
+const initialState: UIState = {
   loading: false,
   msgError: null
-}
+};
 
-export const uiReducer = (state: UI = initialState, action: UIAction): UI => {
+export const uiReducer = (state: UIState = initialState, action: UIAction): UIState => {
   switch (action.type) {
     case types.uiSetError:
       return {

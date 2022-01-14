@@ -1,10 +1,13 @@
+export interface RootState {
+  auth: AuthState,
+  ui: UIState
+}
 export interface Register {
   name: string;
   email: string;
   password: string;
   password_confirmation: string;
 }
-
 export interface Login {
   email: string,
   password: string
@@ -28,7 +31,7 @@ export type UIAction =
   | { type: types.uiSetError; payload: string; }
   | { type: types.uiRemoveError; };
 
-export interface UI {
+export interface UIState {
   loading: boolean;
   msgError: string | null;
 }
