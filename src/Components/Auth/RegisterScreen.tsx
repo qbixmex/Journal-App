@@ -1,12 +1,16 @@
 import { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import validator from 'validator';
+import { useDispatch } from "react-redux";
 
 import { Register } from "../../Types";
 import useForm from "../../Hooks/useForm";
+import { setError, removeError } from '../../Actions/ui';
 
 const RegisterScreen = () => {
   
+  const dispatch = useDispatch();
+
   const initialState: Register = {
     name: "John Doe",
     email: "johndoe@gmail.com",
@@ -33,49 +37,51 @@ const RegisterScreen = () => {
 
   const isFormValid = (): boolean => {
     if ( name.trim().length === 0 ) {
-      console.warn("Name is required !");
+      dispatch( setError("Name is required !") );
       return false;
     }
 
     else if ( name.trim().length < 2 ) {
-      console.warn("Name must be at least 3 characters long !");
+      dispatch( setError("Name must be at least 3 characters long !") );
       return false;
     }
 
     else if ( !validator.isEmail( email ) ) {
-      console.warn("Email is not valid!");
+      dispatch( setError("Email is not valid!") );
       return false;
     }
     
     else if ( email.trim().length === 0 ) {
-      console.warn("Email is required !");
+      dispatch( setError("Email is required !") );
       return false;
     }
     
     else if ( password.trim().length === 0 ) {
-      console.warn("Password is required !");
+      dispatch( setError("Password is required !") );
       return false;
     }
 
     else if ( password.trim().length < 8 ) {
-      console.warn("Password must be at least 8 characters long!");
+      dispatch( setError("Password must be at least 8 characters long!") );
       return false;
     }
 
     else if ( password_confirmation.trim().length === 0 ) {
-      console.warn("Password must be at least 8 characters long !");
+      dispatch( setError("Password Confirmation is required !") );
       return false;
     }
 
     else if ( password_confirmation.trim().length < 8 ) {
-      console.warn("Password Confirmation must be at least 8 characters long !");
+      dispatch( setError("Password Confirmation must be at least 8 characters long !") );
       return false;
     }
 
     else if (password !== password_confirmation) {
-      console.warn("Password and Password Confirmation do not match !");
+      dispatch( setError("Password and Password Confirmation do not match !") );
       return false;
     }
+
+    dispatch( removeError() );
 
     return true;
   };
