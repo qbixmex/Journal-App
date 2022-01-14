@@ -27,13 +27,9 @@ const AppRouter = () => {
       setChecking( false );
 
     });
-  }, [ dispatch, checking, isLoggedIn ]);
+  }, [ dispatch ]);
 
-  if ( checking ) {
-    return (
-      <h1>Wait ...</h1>
-    );
-  }
+  if ( checking ) return ( <h1>Wait ...</h1> );
 
   return (
     <BrowserRouter>

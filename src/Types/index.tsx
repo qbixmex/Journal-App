@@ -1,7 +1,10 @@
+import { Dispatch } from 'redux';
 export interface RootState {
   auth: AuthState,
   ui: UIState
 }
+
+export type AsyncAction = (dispatch: Dispatch) => void;
 export interface Register {
   name: string;
   email: string;

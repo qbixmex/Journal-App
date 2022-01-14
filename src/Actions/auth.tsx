@@ -1,9 +1,9 @@
 import { firebase, googleAuthProvider } from "../Firebase/firebase-config"
-import { AuthAction, types } from "../Types"
+import { AsyncAction, AuthAction, types } from "../Types"
 import { Dispatch } from "redux";
 import { startLoading, finishLoading } from './ui';
 
-export const startLoginEmailPassword = (email: string, password: string): ( dispatch: Dispatch ) => void => {
+export const startLoginEmailPassword = (email: string, password: string): AsyncAction => {
   return ( dispatch: Dispatch ): void => {
 
     dispatch( startLoading() );
@@ -21,7 +21,11 @@ export const startLoginEmailPassword = (email: string, password: string): ( disp
   };
 };
 
-export const startRegisterWithEmailPasswordAndName = (name: string, email: string, password: string) => {
+export const startRegisterWithEmailPasswordAndName = (
+    name: string,
+    email: string,
+    password: string
+  ): AsyncAction => {
   return ( dispatch: Dispatch ): void => {
     firebase.auth().createUserWithEmailAndPassword( email, password)
       .then( async ({ user }) => {
@@ -32,7 +36,7 @@ export const startRegisterWithEmailPasswordAndName = (name: string, email: strin
   };
 };
 
-export const startGoogleLogin = (): ( dispatch: Dispatch ) => void => {
+export const startGoogleLogin = (): AsyncAction => {
   return ( dispatch: Dispatch ) => {
     firebase.auth().signInWithPopup( googleAuthProvider )
       .then(({ user }) => {
@@ -45,6 +49,13 @@ export const login = (uid: string, displayName: string): AuthAction => ({
   type: types.login,
   payload: { uid, displayName }
 });
+
+export const startLogout = (): AsyncAction => {
+  return async ( dispatch: Dispatch ) => {
+    await firebase.auth().signOut();
+    dispatch( logout() );
+  };
+};
 
 export const logout = (): AuthAction => ({
   type: types.logout,
