@@ -10,7 +10,9 @@ export const startLoginEmailPassword = (email: string, password: string): AsyncA
 
     firebase.auth().signInWithEmailAndPassword( email, password )
       .then(({ user }) => {
-        dispatch( login( user?.uid!, user?.displayName! ) )
+        if ( user?.uid && user?.displayName) {
+          dispatch( login( user.uid, user.displayName ) )
+        }
         dispatch( finishLoading() );
       })
       .catch( ( e ) => {
@@ -30,7 +32,9 @@ export const startRegisterWithEmailPasswordAndName = (
     firebase.auth().createUserWithEmailAndPassword( email, password)
       .then( async ({ user }) => {
         await user?.updateProfile({ displayName: name });
-        dispatch( login( user?.uid!, user?.displayName! ) );
+        if ( user?.uid && user?.displayName) {
+          dispatch( login( user.uid, user.displayName ) );
+        }
       })
       .catch( e => console.error( e ) );
   };
@@ -40,7 +44,9 @@ export const startGoogleLogin = (): AsyncAction => {
   return ( dispatch: Dispatch ) => {
     firebase.auth().signInWithPopup( googleAuthProvider )
       .then(({ user }) => {
-        dispatch( login(user?.uid!, user?.displayName!) )
+        if ( user?.uid && user?.displayName) {
+          dispatch( login(user.uid, user.displayName ) )
+        }
       });
   }
 };

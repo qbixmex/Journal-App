@@ -16,12 +16,13 @@ export interface Login {
   password: string
 }
 export interface AuthState {
-  uid?: string | number,
+  uid?: string;
   name?: string;
+  logged: boolean;
 };
 
 export interface AuthPayload {
-  uid: string | number;
+  uid: string;
   displayName: string;
 }
 
