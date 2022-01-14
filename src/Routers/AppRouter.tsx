@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -9,15 +9,31 @@ import { login } from '../Actions/auth';
 
 const AppRouter = () => {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const [ checking, setChecking ] = useState( true );
+  const [ isLoggedIn, setIsLoggedIn ] = useState( false );
 
   useEffect(() => {
+
     firebase.auth().onAuthStateChanged(( user ) => {
       if ( user?.uid && user?.displayName ) {
         dispatch( login( user.uid, user?.displayName ) );
+        setIsLoggedIn( true );
+      } else {
+        setIsLoggedIn( false );
       }
+
+      setChecking( false );
+
     });
-  }, [ dispatch ]);
+  }, [ dispatch, checking, isLoggedIn ]);
+
+  if ( checking ) {
+    return (
+      <h1>Wait ...</h1>
+    );
+  }
 
   return (
     <BrowserRouter>
