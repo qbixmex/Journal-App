@@ -1,14 +1,23 @@
 import { firebase, googleAuthProvider } from "../Firebase/firebase-config"
 import { AuthAction, types } from "../Types"
 import { Dispatch } from "redux";
+import { startLoading, finishLoading } from './ui';
 
 export const startLoginEmailPassword = (email: string, password: string): ( dispatch: Dispatch ) => void => {
   return ( dispatch: Dispatch ): void => {
+
+    dispatch( startLoading() );
+
     firebase.auth().signInWithEmailAndPassword( email, password )
       .then(({ user }) => {
         dispatch( login( user?.uid!, user?.displayName! ) )
+        dispatch( finishLoading() );
       })
-      .catch( e => console.error( e ));
+      .catch( ( e ) => {
+        console.error( e );
+        dispatch( finishLoading() );
+      });
+
   };
 };
 

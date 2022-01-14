@@ -29,7 +29,9 @@ export type AuthAction =
 
 export type UIAction =
   | { type: types.uiSetError; payload: string; }
-  | { type: types.uiRemoveError; };
+  | { type: types.uiRemoveError; }
+  | { type: types.uiStartLoading; }
+  | { type: types.uiFinishLoading; };
 
 export interface UIState {
   loading: boolean;
@@ -37,8 +39,10 @@ export interface UIState {
 }
 
 export enum types {
-  login = "[Auth] Login",
-  logout = "[Auth] Logout",
-  uiSetError = "[UI] Set Error",
-  uiRemoveError = "[UI] Remove Error",
+  login           = "[Auth] Login",
+  logout          = "[Auth] Logout",
+  uiSetError      = "[UI] Set Error",
+  uiRemoveError   = "[UI] Remove Error",
+  uiStartLoading  = "[UI] Start loading",
+  uiFinishLoading = "[UI] Finish loading",
 }
