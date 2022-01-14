@@ -16,7 +16,7 @@ const LoginScreen = () => {
 
   const { handleInputChange, email, password } = useForm<Login>( initialState );
 
-  const handleLogin = (event : FormEvent<HTMLFormElement>) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch( startLoginEmailPassword( email, password ) );
   };
