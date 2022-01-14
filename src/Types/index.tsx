@@ -1,7 +1,9 @@
 import { Dispatch } from 'redux';
+import { NotesState } from '../Reducers/notesReducer';
 export interface RootState {
   auth: AuthState,
-  ui: UIState
+  ui: UIState,
+  notes: NotesState
 }
 
 export type AsyncAction = (dispatch: Dispatch) => void;
