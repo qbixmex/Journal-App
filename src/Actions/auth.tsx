@@ -1,6 +1,8 @@
 import { firebase, googleAuthProvider } from "../Firebase/firebase-config"
 import { AsyncAction, AuthAction, types } from "../Types"
 import { Dispatch } from "redux";
+import Swal from "sweetalert2";
+
 import { startLoading, finishLoading } from './ui';
 
 export const startLoginEmailPassword = (email: string, password: string): AsyncAction => {
@@ -15,9 +17,9 @@ export const startLoginEmailPassword = (email: string, password: string): AsyncA
         }
         dispatch( finishLoading() );
       })
-      .catch( ( e ) => {
-        console.error( e );
+      .catch( e => {
         dispatch( finishLoading() );
+        Swal.fire( "Error", "There is no user record corresponding to this credentials", "error" );
       });
 
   };
@@ -36,7 +38,9 @@ export const startRegisterWithEmailPasswordAndName = (
           dispatch( login( user.uid, user.displayName ) );
         }
       })
-      .catch( e => console.error( e ) );
+      .catch( e => {
+        Swal.fire( "Error", "The email address is already in use by another account", "error" );
+      });
   };
 };
 

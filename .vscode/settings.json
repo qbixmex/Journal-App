@@ -4,6 +4,7 @@
     "firestore",
     "Firestore",
     "fontawesome",
-    "fortawesome"
+    "fortawesome",
+    "Swal"
   ]
 }
