@@ -1,18 +1,5 @@
-export interface Note {
-  id?: string;
-  title: string;
-  body: string;
-  imageUrl?: string;
-  date: number;
-}
-
-export interface NotesState {
-  notes: Note[];
-  active: null | Note;
-};
-
-export type NotesAction = 
-  | { type: "[Note] index" };
+import { types } from "../Types";
+import { NotesAction, NotesState } from "../Types/notesTypes";
 
 const initialState: NotesState = {
   notes: [],
@@ -21,9 +8,12 @@ const initialState: NotesState = {
 
 export const notesReducer = ( state: NotesState = initialState, action: NotesAction ): NotesState => {
   switch ( action.type ) {
-    case "[Note] index":
-      return state;
-  
+    case types.notesActive:
+      return {
+        ...state,
+        active: { ...action.payload }
+      };
+
     default:
       return state;
   }
