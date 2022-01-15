@@ -5,6 +5,7 @@ import { faUser, faCalendarPlus } from '@fortawesome/free-solid-svg-icons'
 import JournalEntries from "./JournalEntries";
 import { startLogout } from '../../Actions/auth';
 import { RootState } from '../../Types/index';
+import { startNewNote } from '../../Actions/notes';
 
 const Sidebar = () => {
 
@@ -13,6 +14,10 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     dispatch( startLogout() );
+  };
+
+  const handleAddEntry = () => {
+    dispatch( startNewNote() );
   };
 
   return (
@@ -28,7 +33,10 @@ const Sidebar = () => {
 
       </div>
 
-      <div className="journal__new-entry">
+      <div
+        className="journal__new-entry"
+        onClick={ handleAddEntry }
+      >
         <FontAwesomeIcon icon={ faCalendarPlus } size="5x" className="mb-4" />
         <p>New Entry</p>
       </div>

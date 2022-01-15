@@ -1,8 +1,8 @@
 export interface Note {
-  id: string;
+  id?: string;
   title: string;
   body: string;
-  imageUrl: null | string;
+  imageUrl?: string;
   date: number;
 }
 

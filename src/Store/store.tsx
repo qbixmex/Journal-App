@@ -16,3 +16,5 @@ export const store = createStore(
   reducers,
   composeEnhancers( applyMiddleware(thunk) )
 );
+
+export type GetState = ReturnType<typeof store.getState>;
