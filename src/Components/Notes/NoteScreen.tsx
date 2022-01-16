@@ -3,10 +3,20 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../Types/index';
 import useForm from '../../Hooks/useForm';
 import { Note } from "../../Types/notesTypes";
+import { useEffect, useRef } from "react";
 
 const NoteScreen = () => {
   const note = useSelector(({ notes }: RootState) => notes.active);
-  const { handleInputChange, title, body, imageUrl } = useForm<Note>( note! );
+  const { handleInputChange, reset, title, body, imageUrl } = useForm<Note>( note! );
+
+  const activeId = useRef( note?.id );
+
+  useEffect(() => {
+    if( note?.id !== activeId.current) {
+      reset( note! );
+      activeId.current = note?.id
+    }
+  }, [ note, reset ]);
 
   return (
     <div className="notes__main-content">

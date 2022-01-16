@@ -11,8 +11,8 @@ const useForm = <T extends Object>( initialState: T) => {
     });
   };
 
-  const reset = () => {
-    setValues( initialState );
+  const reset = ( newState = initialState) => {
+    setValues( newState );
   };
 
   return { values, handleInputChange, reset, ...values };
