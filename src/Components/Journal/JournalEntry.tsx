@@ -1,29 +1,38 @@
-import bokuNoHeroImg from "../../Assets/Images/boku-no-hero.jpg";
+import { Note } from "../../Types/notesTypes";
+import moment from "moment";
 
-const JournalEntry = () => {
+type Props = {
+  entry: Note
+}
+
+const JournalEntry = ({ entry }: Props) => {
+  const { title, body, imageUrl, date } = entry;
+  const noteDate = moment( date );
+
   return (
     <div className="journal__entry">
-      <div
-        className="journal__entry-picture"
-        style={{
-          backgroundSize: "cover",
-          backgroundImage: `url(${ bokuNoHeroImg })`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center"
-        }}
-      ></div>
+      {
+        imageUrl &&
+        (
+          <div
+            className="journal__entry-picture"
+            style={{
+              backgroundSize: "cover",
+              backgroundImage: `url(${ imageUrl })`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center center"
+            }}
+          ></div>
+        )
+      }
       <div className="journal__entry-body">
-        <h3 className="journal__entry-title">
-          Lorem Ipsum dolor dolem
-        </h3>
+        <h3 className="journal__entry-title">{ title }</h3>
 
-        <div className="journal__entry-content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit deleniti velit atque.
-        </div>
+        <div className="journal__entry-content">{ body }</div>
 
         <div className="journal__entry-date-box">
-          <span>Monday</span>
-          <h4>28</h4>
+          <span>{ noteDate.format("dddd") }</span>
+          <h4>{ noteDate.format("Do") }</h4>
         </div>
       </div>
     </div>

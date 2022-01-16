@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import JournalEntry from "./JournalEntry";
-
-const entries: number[] = [1, 2, 3, 4, 5];
+import { RootState } from '../../Types/index';
 
 const JournalEntries = () => {
+
+  const { notes } = useSelector(( { notes }: RootState ) => notes );
+
   return (
     <div className="journal__entries">
       {
-        entries.map( value => (
-          <JournalEntry key={ value } />
+        notes.map( note => (
+          <JournalEntry key={ note.id } entry={ note } />
         ))
       }
     </div>
