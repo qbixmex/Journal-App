@@ -70,7 +70,3 @@ const NoteScreen = () => {
 };
 
 export default NoteScreen;
-function dispatch() {
-  throw new Error("Function not implemented.");
-}
-

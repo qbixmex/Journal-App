@@ -1,4 +1,6 @@
 import { Dispatch } from "redux";
+import Swal from 'sweetalert2';
+
 import { db } from "../Firebase/firebase-config"
 import { loadNotes } from "../Helpers/loadNotes";
 import { GetState } from '../Store/store';
@@ -17,7 +19,7 @@ export const startNewNote = () => {
 
     const doc = await db.collection(`${ uid }/journal/notes`).add( newNote );
 
-    dispatch( activeNote( doc.id, newNote ) );
+    dispatch( activeNote( doc.id, newNote ) );    
   };
 };
 
@@ -42,7 +44,7 @@ export const setNotes = ( notes: Note[] ) => ({
 });
 
 export const startSaveNote = ( note: Note ) => {
-  return async ( dipatch: Dispatch, getState: () => GetState ) => {
+  return async ( dispatch: Dispatch, getState: () => GetState ) => {
     const { uid } = getState().auth;
 
     const noteToFirestore = { ...note };
@@ -50,8 +52,13 @@ export const startSaveNote = ( note: Note ) => {
 
     await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore );
 
-    
+    Swal.fire("Excellent", `<b><i>"${ note.title }"</i></b><br />saved successfully`, "success");
 
+    dispatch( refreshNote( note.id!, note ) );
   };
 }
 
+export const refreshNote = ( id: string, note: Note ) => ({
+  type: types.notesUpdated,
+  payload: { id, note }
+});
