@@ -21,7 +21,7 @@ export const startNewNote = () => {
   };
 };
 
-export const activeNote = ( id: string, note: Note ) => ({
+export const activeNote = ( id: string | undefined, note: Note ) => ({
   type: types.notesActive,
   payload: {
     id,
