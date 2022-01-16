@@ -8,6 +8,8 @@ import AuthRouter from "./AuthRouter";
 import { login } from '../Actions/auth';
 import PublicRoutes from './PublicRoutes';
 import PrivateRoutes from './PrivateRoutes';
+import { loadNotes } from '../Helpers/loadNotes';
+import { setNotes } from '../Actions/notes';
 
 const AppRouter = () => {
 
@@ -17,10 +19,14 @@ const AppRouter = () => {
 
   useEffect(() => {
 
-    firebase.auth().onAuthStateChanged(( user ) => {
+    firebase.auth().onAuthStateChanged( async ( user ) => {
 
       if ( user?.uid && user?.displayName ) {
         dispatch( login( user.uid, user?.displayName ) );
+
+        const notes = await loadNotes( user.uid );
+
+        dispatch( setNotes( notes ) )
       }
 
       setChecking( false );

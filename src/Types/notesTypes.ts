@@ -14,4 +14,5 @@ export interface NotesState {
 };
 
 export type NotesAction = 
-  | { type: types.notesActive, payload: Note };
+  | { type: types.notesActive, payload: Note }
+  | { type: types.notesLoad, payload: Note[] };
