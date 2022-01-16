@@ -1,13 +1,15 @@
 import NotesAppBar from "./NotesAppBar";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../Types/index';
 import useForm from '../../Hooks/useForm';
 import { Note } from "../../Types/notesTypes";
 import { useEffect, useRef } from "react";
+import { activeNote } from '../../Actions/notes';
 
 const NoteScreen = () => {
   const note = useSelector(({ notes }: RootState) => notes.active);
-  const { handleInputChange, reset, title, body, imageUrl } = useForm<Note>( note! );
+  const dispatch = useDispatch();
+  const { values, handleInputChange, reset, title, body, imageUrl } = useForm<Note>( note! );
 
   const activeId = useRef( note?.id );
 
@@ -17,6 +19,10 @@ const NoteScreen = () => {
       activeId.current = note?.id
     }
   }, [ note, reset ]);
+
+  useEffect(() => {
+    dispatch( activeNote( values.id, { ...values } ) );
+  }, [ values, dispatch ]);
 
   return (
     <div className="notes__main-content">
@@ -64,3 +70,7 @@ const NoteScreen = () => {
 };
 
 export default NoteScreen;
+function dispatch() {
+  throw new Error("Function not implemented.");
+}
+
