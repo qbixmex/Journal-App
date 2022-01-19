@@ -17,7 +17,7 @@ const JournalEntry = ({ entry }: Props) => {
 
   return (
     <div
-      className="journal__entry"
+      className="journal__entry animate__animated animate__fadeIn animate__faster"
       onClick={ () => handleActiveNote() }
     >
       {

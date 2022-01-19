@@ -9,7 +9,7 @@ const RegisterScreen = () => {
   const active = useSelector( ({ notes }: RootState) => notes.active );
 
   return (
-    <div className="journal__main-content">
+    <div className="journal__main-content animate__animated animate__fadeIn animate__faster">
       <Sidebar />
       { active ? <NoteScreen /> : <NothingSelected /> }
     </div>
