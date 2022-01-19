@@ -93,8 +93,25 @@ export const startUploading = ( file: File ) => {
 
       activeNote.imageUrl = fileUrl;
 
-      dispatch( startSaveNote( activeNote ) );
-
       Swal.close();
+
+      dispatch( startSaveNote( activeNote ) );
   }; 
 };
+
+export const startDeleting = ( id: string ) => {
+  return async (dispatch: Dispatch, getState: () => GetState) => {
+    const uid: string = getState().auth.uid!;
+
+    await db.doc(`${ uid }/journal/notes/${ id }`).delete();
+
+    dispatch( deleteNote( id ) );
+
+    Swal.fire("Excellent", "Deleted Successfully", "success");
+  }
+};
+
+export const deleteNote = ( id: string ) => ({
+  type: types.notesDelete,
+  payload: { id }
+});

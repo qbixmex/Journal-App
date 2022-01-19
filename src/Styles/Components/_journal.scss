@@ -63,6 +63,7 @@
     color: $gray-dark;
     display: flex;
     margin-bottom: 15px;
+    justify-content: space-between;
     cursor: pointer;
 
     &:last-child {
