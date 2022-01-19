@@ -17,4 +17,5 @@ export type NotesAction =
   | { type: types.notesActive | types.notesAddNew, payload: Note }
   | { type: types.notesLoad, payload: Note[] }
   | { type: types.notesUpdated, payload: { id: string, note: Note } }
-  | { type: types.notesDelete, payload: { id: string } };
+  | { type: types.notesDelete, payload: { id: string } }
+  | { type: types.notesLogoutCleaning };

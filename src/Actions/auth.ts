@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import Swal from "sweetalert2";
 
 import { startLoading, finishLoading } from './ui';
+import { noteLogout } from "./notes";
 
 export const startLoginEmailPassword = (email: string, password: string): AsyncAction => {
   return ( dispatch: Dispatch ): void => {
@@ -64,6 +65,7 @@ export const startLogout = (): AsyncAction => {
   return async ( dispatch: Dispatch ) => {
     await firebase.auth().signOut();
     dispatch( logout() );
+    dispatch( noteLogout() );
   };
 };
 

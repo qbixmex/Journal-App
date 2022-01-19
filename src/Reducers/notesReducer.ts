@@ -48,6 +48,12 @@ export const notesReducer = ( state: NotesState = initialState, action: NotesAct
         notes: state.notes.filter( note => note.id !== action.payload.id )
       };
 
+    case types.notesLogoutCleaning:
+      return {
+        notes: [],
+        active: null
+      };
+
     default:
       return state;
   }
