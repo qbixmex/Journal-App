@@ -12,7 +12,7 @@ const JournalEntry = ({ entry }: Props) => {
   const dispatch = useDispatch();
 
   const handleActiveNote = () => {
-    dispatch( activeNote( entry.id, entry ) );
+    dispatch( activeNote( entry.id!, entry ) );
   };
 
   return (

@@ -5,6 +5,7 @@
     "Firestore",
     "fontawesome",
     "fortawesome",
-    "Swal"
+    "Swal",
+    "sweetalert"
   ]
 }

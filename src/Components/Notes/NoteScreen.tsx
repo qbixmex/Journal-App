@@ -7,8 +7,9 @@ import { useEffect, useRef } from "react";
 import { activeNote } from '../../Actions/notes';
 
 const NoteScreen = () => {
-  const note = useSelector(({ notes }: RootState) => notes.active);
   const dispatch = useDispatch();
+
+  const note = useSelector(({ notes }: RootState) => notes.active);
   const { values, handleInputChange, reset, title, body, imageUrl } = useForm<Note>( note! );
 
   const activeId = useRef( note?.id );
@@ -21,7 +22,7 @@ const NoteScreen = () => {
   }, [ note, reset ]);
 
   useEffect(() => {
-    dispatch( activeNote( values.id, { ...values } ) );
+    dispatch( activeNote( values.id!, { ...values } ) );
   }, [ values, dispatch ]);
 
   return (
@@ -59,7 +60,7 @@ const NoteScreen = () => {
               <img
                 id="image"
                 src={ imageUrl }
-                alt="Boku no hero"
+                alt={ title }
               />
             </div>
           )

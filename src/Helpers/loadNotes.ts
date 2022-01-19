@@ -10,6 +10,7 @@ export const loadNotes = async ( uid: string ) => {
       id: note.id,
       title: note.data().title,
       body: note.data().body,
+      imageUrl: note.data().imageUrl,
       date: note.data().date
     });
   });

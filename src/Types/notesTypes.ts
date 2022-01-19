@@ -14,6 +14,6 @@ export interface NotesState {
 };
 
 export type NotesAction = 
-  | { type: types.notesActive, payload: Note }
+  | { type: types.notesActive | types.notesAddNew, payload: Note }
   | { type: types.notesLoad, payload: Note[] }
   | { type: types.notesUpdated, payload: { id: string, note: Note } };
