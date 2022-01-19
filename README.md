@@ -1,4 +1,4 @@
-# Heroes App
+# Journal App
 
 This project is Udemy Tutorial from Fernando Herrera.
 
