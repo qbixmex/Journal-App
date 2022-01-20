@@ -60,7 +60,7 @@ export const startSaveNote = ( note: Note ) => {
 
     await db.doc(`${ uid }/journal/notes/${ note.id }`).update( noteToFirestore );
 
-    dispatch( refreshNote( note.id!, note ) );
+    dispatch( refreshNote( note.id!, noteToFirestore ) );
 
     Swal.fire("Excellent", `<b><i>"${ note.title }"</i></b><br />saved successfully`, "success");
   };
