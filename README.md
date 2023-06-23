@@ -1,6 +1,6 @@
 # Journal App
 
-This project is Udemy Tutorial from Fernando Herrera.
+This project is made with ReactJs, Typescript connected to Firebase and Cloudinary.
 
 ## Available Scripts
 
